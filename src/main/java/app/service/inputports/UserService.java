@@ -8,13 +8,9 @@ public interface UserService {
 
 
     public User create(Integer id, String name, String lastName, String email, String phone, String password, String state, String city, String preferences);
-    public void selectById(int id);
+    public User selectById(int id);
     public List<User> selectUsers();
-    public void update();
+    public User update(int id, String name, String lastName, String email, String phone, String password, String state, String city, String preferences);
     public void deleteUser(int id);
-
-
-
-
-
+    int countUsers();
 }

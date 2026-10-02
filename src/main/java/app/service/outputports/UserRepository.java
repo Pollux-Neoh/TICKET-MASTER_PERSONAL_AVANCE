@@ -13,6 +13,7 @@ public interface UserRepository {
     public User updateUser(User user);
     public void deleteById(int id);
 
-
+    //Necesario agregar el int countUsers para que coincida con el metodo que acabo de crear
+    int countUsers();
 
 }

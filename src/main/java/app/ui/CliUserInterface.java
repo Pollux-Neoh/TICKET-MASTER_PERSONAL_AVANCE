@@ -17,76 +17,86 @@ public class CliUserInterface {
     public CliUserInterface(UserView userView, SeatView seatView) {
     }
 
-    public void applicationInit(){
+    public void applicationInit() {
 
         System.out.println("Bienvenido TicketMax V1");
 
-        int init = DataTypeValidator.validateInt("Presione 1 para iniciar la aplicación");
+        int init = DataTypeValidator.validateInt("Presione 1 para iniciar la aplicación: ");
 
+        while (init != 0) {
 
-        while(init != 0){
+            int option = DataTypeValidator.validateInt("\n--- MENÚ PRINCIPAL ---\n" +
+                    "1. Gestión de Usuarios\n" +
+                    "2. Salir\n" +
+                    "Seleccione una opción: ");
 
-            int option = DataTypeValidator.validateInt("1. Registro " +
-                    "2. Login" +
-                    "3. Salir");
-
-            switch (option){
+            switch (option) {
                 case 1:
-                    userView.createUser();
+                    userMenu(); // Abre el submenú con todas las opciones CRUD
                     break;
                 case 2:
-                    System.out.println("Login");
-                    userMenu();
-                    break;
-                case 3:
-                    System.out.println("Saliendo de la aplicación");
+                    System.out.println("Saliendo de la aplicación TicketMax...");
                     init = 0;
                     break;
                 default:
-                    System.out.println("Seleccione una opción valida");
+                    System.out.println("Seleccione una opción válida.");
                     break;
             }
-
         }
-
-
-
     }
 
 
-    public void userMenu(){
+    public void userMenu() {
 
-        int option = DataTypeValidator.validateInt("Seleccione 1. registrar usuario " +
-                "2. Consultar Usuario por id" +
-                "3. Consultar todos los usuarios");
+        int option = DataTypeValidator.validateInt("\n--- MENÚ DE GESTIÓN DE USUARIOS ---\n" +
+                "1. Registrar usuario\n" +
+                "2. Consultar usuario por ID\n" +
+                "3. Consultar todos los usuarios\n" +
+                "4. Actualizar usuario\n" +
+                "5. Eliminar usuario\n" +
+                "6. Ver total de usuarios registrados\n" +
+                "7. Volver / Salir\n" +
+                "Seleccione una opción: ");
 
-        switch (option){
+        switch (option) {
             case 1:
-                System.out.println("Registrar Usuario");
+                System.out.println("\n--- Registrar Usuario ---");
                 userView.createUser();
                 break;
+
             case 2:
-                System.out.println("Consultar usuario por id");
-                int id = DataTypeValidator.validateInt("Ingrese el id del usuario a consultar");
-                userView.selectById(id);
+                System.out.println("\n--- Consultar Usuario por ID ---");
+                userView.selectById(); // El ID se solicita dentro de selectById()
                 break;
+
             case 3:
-                System.out.println("Consultar todos los usuarios");
+                System.out.println("\n--- Consultar Todos los Usuarios ---");
                 userView.selectUsers();
                 break;
+
+            case 4:
+                System.out.println("\n--- Actualizar Usuario ---");
+                userView.update();
+                break;
+
+            case 5:
+                System.out.println("\n--- Eliminar Usuario ---");
+                userView.delete();
+                break;
+
+            case 6:
+                System.out.println("\n--- Total de Usuarios ---");
+                userView.countUsers();
+                break;
+
+            case 7:
+                System.out.println("Volviendo al menú anterior...");
+                break;
+
             default:
-                System.out.println("Ingrese una opción valida");
+                System.out.println("Ingrese una opción válida.");
+                break;
         }
-
-
-
-
-
     }
-
-
-
-
-
-
 }
+

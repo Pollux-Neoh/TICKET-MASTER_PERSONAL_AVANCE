@@ -1,8 +1,6 @@
 package app.service;
 
-import app.domain.enums.SelectStateEnum;
 import app.domain.User;
-import app.repository.UserRepositoryImplCollection;
 import app.service.inputports.UserService;
 import app.service.outputports.UserRepository;
 
@@ -25,13 +23,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void selectById(int id) {
-
+    public User selectById(int id) {
+        return null;
     }
 
     @Override
-    public void update() {
+    public User update(int id, String name,
+                       String lastName, String email,
+                       String phone, String password,
+                       String state, String city,
+                       String preferences) {
 
+        return null;
     }
 
     @Override
@@ -43,5 +46,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(int id) {
 
+    }
+
+    @Override
+    public int countUsers() {
+        return 0;
     }
 }
